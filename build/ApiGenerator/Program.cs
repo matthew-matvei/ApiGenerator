@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.IO;
-using System.Reflection;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Text;
-using System.CodeDom;
 
 namespace ApiGenerator
 {
@@ -27,12 +25,9 @@ namespace ApiGenerator
         private static IEnumerable<Stream> GetSchemas()
         {
             var schemasFolder = Path.Join(
-                Assembly.GetExecutingAssembly().CodeBase,
-                "..",
-                "..",
-                "ApiSchemas"
-            );
-
+                Directory.GetCurrentDirectory(),
+                "ApiSchemas");
+                
             return Directory
                 .EnumerateFiles(schemasFolder)
                 .Select(File.OpenRead);
