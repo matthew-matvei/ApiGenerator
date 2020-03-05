@@ -42,7 +42,10 @@ namespace ApiGenerator
 
             var text = reader.ReadToEnd();
             reader.Close();
-            return JsonSerializer.Deserialize<Schema>(text);
+
+            return JsonSerializer.Deserialize<Schema>(
+                text,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         private static Schema ValidateSchema(
