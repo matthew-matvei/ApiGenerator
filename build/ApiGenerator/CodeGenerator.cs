@@ -54,9 +54,7 @@ namespace ApiGenerator
 
         private static string GeneratedControllersFolder => 
             Path.Join(
-                Assembly.GetExecutingAssembly().CodeBase,
-                "..",
-                "..",
+                Directory.GetCurrentDirectory(),
                 "..",
                 "..",
                 "src",
