@@ -52,7 +52,7 @@ namespace ApiGenerator
             Schema schema)
         {
             var validationErrors = new List<string>();
-            if (!string.IsNullOrWhiteSpace(schema.Name))
+            if (string.IsNullOrWhiteSpace(schema.Name))
                 validationErrors.Add($"The schema's {nameof(schema.Name)} cannot be empty");
 
             if (validationErrors.Any())
