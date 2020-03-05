@@ -17,9 +17,11 @@ namespace ApiGenerator
 
             var controller = new CodeTypeDeclaration(schema.Name);
             methods.ToList().ForEach(m => controller.Members.Add(m));
+            controller.BaseTypes.Add(new CodeTypeReference("ControllerBase"));
 
             var @namespace = new CodeNamespace("MyWebApi.Controllers");
             @namespace.Types.Add(controller);
+            @namespace.Imports.Add(new CodeNamespaceImport("Microsoft.AspNetCore.Mvc"));
 
             unit.Namespaces.Add(@namespace);
 
@@ -94,8 +96,8 @@ namespace ApiGenerator
 
             var httpMethodAttribute = new CodeAttributeDeclaration(
                 action.Method == "post"
-                    ? "HttpPostAttribute"
-                    : "HttpGetAttribute",
+                    ? "HttpPost"
+                    : "HttpGet",
                 new CodeAttributeArgument(
                     new CodePrimitiveExpression(action.Path)
                 )
