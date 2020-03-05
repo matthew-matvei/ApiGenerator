@@ -33,8 +33,11 @@ namespace ApiGenerator
             string schemaName)
         {
             var provider = CodeDomProvider.CreateProvider("CSharp");
+            var destinationFolder = GeneratedControllersFolder;
+            Directory.CreateDirectory(destinationFolder);
+
             var fileName = Path.Join(
-                GeneratedControllersFolder,
+                destinationFolder,
                 $"{schemaName}.{provider.FileExtension}"
             );
 
