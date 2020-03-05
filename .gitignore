@@ -2,3 +2,6 @@ bin
 obj
 .ionide
 .vs
+
+# The Controllers folder is for generated controller files
+Controllers
